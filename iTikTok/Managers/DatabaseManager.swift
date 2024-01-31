@@ -6,3 +6,17 @@
 //
 
 import Foundation
+import FirebaseDatabase
+
+final class DatabaseManager {
+    
+    public static let shared = DatabaseManager()
+    private init() {}
+    
+    private let database = Database.database().reference()
+    
+    //MARK: - Public
+    public func getAllUsers(completion: ([String]) -> Void) {
+        
+    }
+}

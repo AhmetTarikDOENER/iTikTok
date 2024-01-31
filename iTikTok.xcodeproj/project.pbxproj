@@ -34,6 +34,7 @@
 		4512478A2B6AD288000EE7CF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 451247892B6AD288000EE7CF /* FirebaseFirestore */; };
 		4512478C2B6AD288000EE7CF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4512478B2B6AD288000EE7CF /* FirebaseStorage */; };
 		4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */; };
+		451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 451247902B6AE16E000EE7CF /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 				451247862B6AD288000EE7CF /* FirebaseCrashlytics in Frameworks */,
 				451247822B6AD288000EE7CF /* FirebaseAnalytics in Frameworks */,
 				451247882B6AD288000EE7CF /* FirebaseDatabase in Frameworks */,
+				451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */,
 				4512478A2B6AD288000EE7CF /* FirebaseFirestore in Frameworks */,
 				451247842B6AD288000EE7CF /* FirebaseAuth in Frameworks */,
 				4512478C2B6AD288000EE7CF /* FirebaseStorage in Frameworks */,
@@ -219,6 +221,7 @@
 				451247872B6AD288000EE7CF /* FirebaseDatabase */,
 				451247892B6AD288000EE7CF /* FirebaseFirestore */,
 				4512478B2B6AD288000EE7CF /* FirebaseStorage */,
+				451247902B6AE16E000EE7CF /* SDWebImage */,
 			);
 			productName = iTikTok;
 			productReference = 451247422B6ABC3B000EE7CF /* iTikTok.app */;
@@ -250,6 +253,7 @@
 			mainGroup = 451247392B6ABC3B000EE7CF;
 			packageReferences = (
 				451247802B6AD288000EE7CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4512478F2B6AE16E000EE7CF /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 451247432B6ABC3B000EE7CF /* Products */;
 			projectDirPath = "";
@@ -526,6 +530,14 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		4512478F2B6AE16E000EE7CF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.10;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -558,6 +570,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 451247802B6AD288000EE7CF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		451247902B6AE16E000EE7CF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4512478F2B6AE16E000EE7CF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
