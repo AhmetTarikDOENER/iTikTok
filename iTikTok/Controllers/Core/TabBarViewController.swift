@@ -23,7 +23,6 @@ class TabBarViewController: UITabBarController {
         let notificationsVC = NotificationsViewController()
         let profileVC = ProfileViewController()
         
-        homeVC.title = "Home"
         exploreVC.title = "Explore"
         notificationsVC.title = "Notifications"
         profileVC.title = "Profile"
@@ -32,6 +31,10 @@ class TabBarViewController: UITabBarController {
         let navVC2 = UINavigationController(rootViewController: exploreVC)
         let navVC3 = UINavigationController(rootViewController: notificationsVC)
         let navVC4 = UINavigationController(rootViewController: profileVC)
+        
+        navVC1.navigationBar.backgroundColor = .clear
+        navVC1.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navVC1.navigationBar.shadowImage = UIImage()
         
         navVC1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
         navVC2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "safari"), tag: 2)
