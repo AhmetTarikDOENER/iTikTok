@@ -36,6 +36,7 @@
 		4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */; };
 		451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 451247902B6AE16E000EE7CF /* SDWebImage */; };
 		459165282B6BFC3300A43746 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459165272B6BFC3300A43746 /* Extensions.swift */; };
+		4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4591652A2B6C0DBA00A43746 /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		4512477E2B6ACB79000EE7CF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		459165272B6BFC3300A43746 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4591652A2B6C0DBA00A43746 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				4512475D2B6AC956000EE7CF /* Managers */,
 				4512475C2B6AC94A000EE7CF /* ViewModels */,
+				459165292B6C0DA200A43746 /* Models */,
 				4512475B2B6AC92B000EE7CF /* Views */,
 				4512475A2B6AC926000EE7CF /* Controllers */,
 				451247592B6AC91F000EE7CF /* Resources */,
@@ -201,6 +204,14 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		459165292B6C0DA200A43746 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4591652A2B6C0DBA00A43746 /* PostModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4512477F2B6ACB79000EE7CF /* HapticsManager.swift in Sources */,
+				4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */,
 				4512477B2B6ACB5D000EE7CF /* DatabaseManager.swift in Sources */,
 				4512475F2B6ACA2F000EE7CF /* ExploreViewController.swift in Sources */,
 				451247692B6ACAA3000EE7CF /* UserListViewController.swift in Sources */,

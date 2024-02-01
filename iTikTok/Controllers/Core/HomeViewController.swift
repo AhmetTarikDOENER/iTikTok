@@ -8,8 +8,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    private var forYouPosts = PostModel.mockModels()
+    private var followingPosts = PostModel.mockModels()
 
-    private let horizontalScrollView: UIScrollView = {
+    let horizontalScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -19,12 +22,25 @@ class HomeViewController: UIViewController {
         return scrollView
     }()
     
+    let forYouPageViewController = UIPageViewController(
+        transitionStyle: .scroll,
+        navigationOrientation: .vertical,
+        options: [:]
+    )
+    
+    let followingPageViewController = UIPageViewController(
+        transitionStyle: .scroll,
+        navigationOrientation: .vertical,
+        options: [:]
+    )
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(horizontalScrollView)
         setupFeed()
+        horizontalScrollView.contentOffset = CGPoint(x: view.width, y: 0)
     }
     
     override func viewDidLayoutSubviews() {
@@ -34,31 +50,53 @@ class HomeViewController: UIViewController {
     
     //MARK: - Private
     private func setupFeed() {
-        horizontalScrollView.contentSize = CGSize(
-            width: view.width * 2,
-            height: view.height
-        )
+        horizontalScrollView.contentSize = CGSize(width: view.width * 2, height: view.height)
+        setupFollowingFeed()
+        setupForYouFeed()
+    }
+    
+    private func setupFollowingFeed() {
+        guard let model = followingPosts.first else { return }
         
-        let pagingController = UIPageViewController(
-            transitionStyle: .scroll,
-            navigationOrientation: .vertical,
-            options: [:]
-        )
-        
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemBlue
-        
-        pagingController.setViewControllers(
-            [vc],
+        followingPageViewController.setViewControllers(
+            [PostViewController(model: model)],
             direction: .forward,
             animated: false
         )
-        pagingController.dataSource = self
+        followingPageViewController.dataSource = self
         
-        horizontalScrollView.addSubview(pagingController.view)
-        pagingController.view.frame = view.bounds
-        addChild(pagingController)
-        pagingController.didMove(toParent: self)
+        horizontalScrollView.addSubview(followingPageViewController.view)
+        
+        followingPageViewController.view.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: horizontalScrollView.width,
+            height: horizontalScrollView.height
+        )
+        addChild(followingPageViewController)
+        followingPageViewController.didMove(toParent: self)
+    }
+    
+    private func setupForYouFeed() {
+        guard let model = forYouPosts.first else { return }
+        
+        forYouPageViewController.setViewControllers(
+            [PostViewController(model: model)],
+            direction: .forward,
+            animated: false
+        )
+        forYouPageViewController.dataSource = self
+        
+        horizontalScrollView.addSubview(forYouPageViewController.view)
+        
+        forYouPageViewController.view.frame = CGRect(
+            x: view.width,
+            y: 0,
+            width: horizontalScrollView.width,
+            height: horizontalScrollView.height
+        )
+        addChild(forYouPageViewController)
+        forYouPageViewController.didMove(toParent: self)
     }
 }
 
@@ -68,15 +106,44 @@ extension HomeViewController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        nil
+        guard let fromPost = (viewController as? PostViewController)?.model else { return nil }
+        guard let index = currentPosts.firstIndex(where: {
+            $0.identifier == fromPost.identifier
+        }) else { return nil }
+        
+        if index == 0 {
+            return nil
+        }
+        let priorIndex = index - 1
+        let model = currentPosts[priorIndex]
+        let vc = PostViewController(model: model)
+        
+        return vc
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = [.red, .gray, .green].randomElement()
+        guard let fromPost = (viewController as? PostViewController)?.model else { return nil }
+        guard let index = currentPosts.firstIndex(where: {
+            $0.identifier == fromPost.identifier
+        }) else { return nil }
+        
+        guard index < (currentPosts.count - 1) else { return nil }
+        let nextIndex = index + 1
+        let model = currentPosts[nextIndex]
+        let vc = PostViewController(model: model)
+        
         return vc
+    }
+    
+    var currentPosts: [PostModel] {
+        if horizontalScrollView.contentOffset.x == 0 {
+            // @ Following Page
+            return followingPosts
+        }
+        // @ For You Page
+        return forYouPosts
     }
 }
