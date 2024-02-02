@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         let control = UISegmentedControl(items: titles)
         control.selectedSegmentIndex = 1
         control.backgroundColor = nil
-        control.selectedSegmentTintColor = .white
+        control.selectedSegmentTintColor = .tertiarySystemBackground
         
         return control
     }()
@@ -199,7 +199,8 @@ extension HomeViewController: PostViewControllerDelegate {
             forYouPageViewController.dataSource = nil
         }
         
-        let vc = CommentViewController(post: post)
+        let vc = CommentsViewController(post: post)
+        vc.delegate = self
         addChild(vc)
         vc.didMove(toParent: self)
         view.addSubview(vc.view)
@@ -219,5 +220,35 @@ extension HomeViewController: PostViewControllerDelegate {
                 height: frame.height
             )
         }
+    }
+}
+
+extension HomeViewController: CommentsViewControllerDelegate {
+    
+    func didTapCloseForComments(with viewController: CommentsViewController) {
+        // close comment with animation
+        let frame = viewController.view.frame
+        UIView.animate(withDuration: 0.2) {
+            viewController.view.frame = CGRect(
+                x: 0,
+                y: self.view.height,
+                width: frame.width,
+                height: frame.height
+            )
+        } completion: {
+            [weak self] done in
+            if done {
+                DispatchQueue.main.async {
+                    // remove comment vc as child
+                    viewController.view.removeFromSuperview()
+                    viewController.removeFromParent()
+                    // allow horizontal&vertical scroll
+                    self?.horizontalScrollView.isScrollEnabled = true
+                    self?.forYouPageViewController.dataSource = self
+                    self?.followingPageViewController.dataSource = self
+                }
+            }
+        }
+        
     }
 }
