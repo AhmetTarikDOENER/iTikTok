@@ -81,8 +81,10 @@ class HomeViewController: UIViewController {
     private func setupFollowingFeed() {
         guard let model = followingPosts.first else { return }
         
+        let vc = PostViewController(model: model)
+        vc.delegate = self
         followingPageViewController.setViewControllers(
-            [PostViewController(model: model)],
+            [vc],
             direction: .forward,
             animated: false
         )
@@ -103,8 +105,10 @@ class HomeViewController: UIViewController {
     private func setupForYouFeed() {
         guard let model = forYouPosts.first else { return }
         
+        let vc = PostViewController(model: model)
+        vc.delegate = self
         forYouPageViewController.setViewControllers(
-            [PostViewController(model: model)],
+            [vc],
             direction: .forward,
             animated: false
         )
@@ -140,6 +144,7 @@ extension HomeViewController: UIPageViewControllerDataSource {
         let priorIndex = index - 1
         let model = currentPosts[priorIndex]
         let vc = PostViewController(model: model)
+        vc.delegate = self
         
         return vc
     }
@@ -157,6 +162,7 @@ extension HomeViewController: UIPageViewControllerDataSource {
         let nextIndex = index + 1
         let model = currentPosts[nextIndex]
         let vc = PostViewController(model: model)
+        vc.delegate = self
         
         return vc
     }
@@ -178,6 +184,40 @@ extension HomeViewController: UIScrollViewDelegate {
             control.selectedSegmentIndex = 0
         } else if scrollView.contentOffset.x > (view.width / 2) {
             control.selectedSegmentIndex = 1
+        }
+    }
+}
+
+extension HomeViewController: PostViewControllerDelegate {
+    
+    func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel) {
+        horizontalScrollView.isScrollEnabled = false
+        if horizontalScrollView.contentOffset.x == 0 {
+            // FollowingPage
+            followingPageViewController.dataSource = nil
+        } else {
+            forYouPageViewController.dataSource = nil
+        }
+        
+        let vc = CommentViewController(post: post)
+        addChild(vc)
+        vc.didMove(toParent: self)
+        view.addSubview(vc.view)
+        
+        let frame = CGRect(
+            x: 0,
+            y: view.height,
+            width: view.width,
+            height: view.height * 0.75
+        )
+        vc.view.frame = frame
+        UIView.animate(withDuration: 0.2) {
+            vc.view.frame = CGRect(
+                x: 0,
+                y: self.view.height - frame.height,
+                width: frame.width,
+                height: frame.height
+            )
         }
     }
 }

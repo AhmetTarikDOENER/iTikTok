@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol PostViewControllerDelegate: AnyObject {
+    func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel)
+}
+
 class PostViewController: UIViewController {
 
     var model: PostModel
+    
+    weak var delegate: PostViewControllerDelegate?
     
     private let likeButton: UIButton = {
         let button = UIButton()
@@ -106,27 +112,7 @@ class PostViewController: UIViewController {
     }
     
     @objc private func didTapCommentsButton() {
-        let vc = CommentViewController(post: model)
-        addChild(vc)
-        vc.didMove(toParent: self)
-        view.addSubview(vc.view)
-        
-        let frame: CGRect = CGRect(
-            x: 0,
-            y: view.height,
-            width: view.width,
-            height: view.height * 0.75
-        )
-        vc.view.frame = frame
-        UIView.animate(withDuration: 0.2) {
-            vc.view.frame = CGRect(
-                x: 0,
-                y: self.view.height - frame.height,
-                width: frame.width,
-                height: frame.height
-            )
-        }
-        
+        delegate?.postViewController(self, didTapCommentButtonFor: model)
     }
     
     @objc private func didTapShareButton() {
