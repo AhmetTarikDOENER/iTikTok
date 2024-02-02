@@ -36,6 +36,8 @@
 		4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */; };
 		451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 451247902B6AE16E000EE7CF /* SDWebImage */; };
 		4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671C2B6D8D46001868C1 /* CommentsViewController.swift */; };
+		4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671E2B6D9A9A001868C1 /* PostComment.swift */; };
+		456267212B6D9AC2001868C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456267202B6D9AC2001868C1 /* User.swift */; };
 		459165282B6BFC3300A43746 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459165272B6BFC3300A43746 /* Extensions.swift */; };
 		4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4591652A2B6C0DBA00A43746 /* PostModel.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		4512477E2B6ACB79000EE7CF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4562671C2B6D8D46001868C1 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		4562671E2B6D9A9A001868C1 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
+		456267202B6D9AC2001868C1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		459165272B6BFC3300A43746 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4591652A2B6C0DBA00A43746 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				4591652A2B6C0DBA00A43746 /* PostModel.swift */,
+				4562671E2B6D9A9A001868C1 /* PostComment.swift */,
+				456267202B6D9AC2001868C1 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,12 +320,14 @@
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
 				4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */,
+				4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */,
 				451247632B6ACA46000EE7CF /* NotificationsViewController.swift in Sources */,
 				4512476B2B6ACAAE000EE7CF /* SignInViewController.swift in Sources */,
 				451247652B6ACA50000EE7CF /* ProfileViewController.swift in Sources */,
 				451247792B6ACB46000EE7CF /* StorageManager.swift in Sources */,
 				451247462B6ABC3B000EE7CF /* AppDelegate.swift in Sources */,
 				451247482B6ABC3B000EE7CF /* SceneDelegate.swift in Sources */,
+				456267212B6D9AC2001868C1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
