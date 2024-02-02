@@ -37,6 +37,17 @@ class PostViewController: UIViewController {
         
         return button
     }()
+    
+    private let captionLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 22)
+        label.text = "Check out this video! #fyp #foryou #foryoupage, Check out this video! #fyp #foryou #foryoupage, Check out this video! #fyp #foryou #foryoupage"
+        
+        return label
+    }()
 
     //MARK: - Init
     init(model: PostModel) {
@@ -54,6 +65,7 @@ class PostViewController: UIViewController {
             .red, .green, .black, .orange, .blue, .brown, .gray, .systemPink
         ]
         view.backgroundColor = colors.randomElement()
+        view.addSubview(captionLabel)
         setupButtons()
         setupDoubleTapToLike()
     }
@@ -71,6 +83,14 @@ class PostViewController: UIViewController {
                 height: size
             )
         }
+        captionLabel.sizeToFit()
+        let labelSize = captionLabel.sizeThatFits(CGSize(width: view.width - size - 12, height: view.height))
+        captionLabel.frame = CGRect(
+            x: 5,
+            y: view.height - 10 - view.safeAreaInsets.bottom - labelSize.height - (tabBarController?.tabBar.height ?? 0),
+            width: view.width - size - 12,
+            height: labelSize.height
+        )
     }
     
     private func setupButtons() {
