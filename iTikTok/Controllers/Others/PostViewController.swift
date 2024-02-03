@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol PostViewControllerDelegate: AnyObject {
     func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel)
@@ -15,6 +16,7 @@ protocol PostViewControllerDelegate: AnyObject {
 class PostViewController: UIViewController {
 
     var model: PostModel
+    var player: AVPlayer?
     
     weak var delegate: PostViewControllerDelegate?
     
@@ -78,6 +80,7 @@ class PostViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVideo()
         let colors: [UIColor] = [
             .red, .green, .black, .orange, .blue, .brown, .gray, .systemPink
         ]
@@ -119,6 +122,19 @@ class PostViewController: UIViewController {
     }
     
     //MARK: - Private
+    
+    private func configureVideo() {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else { return }
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(playerLayer)
+        player?.volume = 0
+        player?.play()
+    }
+    
     @objc private func didTapProfileButton() {
         delegate?.postViewController(self, didTapProfileButtonFor: model)
     }
