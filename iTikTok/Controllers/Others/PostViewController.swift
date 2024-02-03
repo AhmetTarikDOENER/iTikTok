@@ -9,6 +9,7 @@ import UIKit
 
 protocol PostViewControllerDelegate: AnyObject {
     func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel)
+    func postViewController(_ vc: PostViewController, didTapProfileButtonFor post: PostModel)
 }
 
 class PostViewController: UIViewController {
@@ -44,6 +45,16 @@ class PostViewController: UIViewController {
         return button
     }()
     
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "test"), for: .normal)
+        button.layer.masksToBounds = true
+        button.imageView?.contentMode = .scaleAspectFill
+        button.tintColor = .white
+        
+        return button
+    }()
+    
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -71,9 +82,10 @@ class PostViewController: UIViewController {
             .red, .green, .black, .orange, .blue, .brown, .gray, .systemPink
         ]
         view.backgroundColor = colors.randomElement()
-        view.addSubview(captionLabel)
+        view.addSubviews(captionLabel, profileButton)
         setupButtons()
         setupDoubleTapToLike()
+        profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,6 +109,18 @@ class PostViewController: UIViewController {
             width: view.width - size - 12,
             height: labelSize.height
         )
+        profileButton.frame = CGRect(
+            x: likeButton.left,
+            y: likeButton.top - 10 - size,
+            width: size,
+            height: size
+        )
+        profileButton.layer.cornerRadius = size / 2
+    }
+    
+    //MARK: - Private
+    @objc private func didTapProfileButton() {
+        delegate?.postViewController(self, didTapProfileButtonFor: model)
     }
     
     private func setupButtons() {
@@ -131,6 +155,7 @@ class PostViewController: UIViewController {
     @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         if !model.isLikedByCurrentUser {
             model.isLikedByCurrentUser = true
+            likeButton.tintColor = .red
         }
         let touchPoint = gesture.location(in: view)
         
