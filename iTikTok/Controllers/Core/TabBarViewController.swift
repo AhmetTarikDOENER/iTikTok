@@ -29,7 +29,6 @@ class TabBarViewController: UITabBarController {
             )
         )
         
-        exploreVC.title = "Explore"
         notificationsVC.title = "Notifications"
         profileVC.title = "Profile"
         

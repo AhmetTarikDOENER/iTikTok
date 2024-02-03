@@ -42,6 +42,13 @@
 		4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4591652A2B6C0DBA00A43746 /* PostModel.swift */; };
 		45F8CD602B6E9E9F00A3BBBD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */; };
 		45F8CD622B6EAF9400A3BBBD /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 45F8CD612B6EAF9400A3BBBD /* video.mp4 */; };
+		45F8CD642B6EBE5000A3BBBD /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */; };
+		45F8CD662B6EBE7500A3BBBD /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD652B6EBE7500A3BBBD /* ExploreCell.swift */; };
+		45F8CD682B6EBEA800A3BBBD /* ExploreSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD672B6EBEA800A3BBBD /* ExploreSectionType.swift */; };
+		45F8CD6A2B6EC00000A3BBBD /* ExploreBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD692B6EC00000A3BBBD /* ExploreBannerViewModel.swift */; };
+		45F8CD6C2B6EC02A00A3BBBD /* ExplorePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD6B2B6EC02A00A3BBBD /* ExplorePostViewModel.swift */; };
+		45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD6D2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift */; };
+		45F8CD702B6EC06B00A3BBBD /* ExploreUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD6F2B6EC06B00A3BBBD /* ExploreUserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +82,13 @@
 		4591652A2B6C0DBA00A43746 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		45F8CD612B6EAF9400A3BBBD /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
+		45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
+		45F8CD652B6EBE7500A3BBBD /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		45F8CD672B6EBEA800A3BBBD /* ExploreSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSectionType.swift; sourceTree = "<group>"; };
+		45F8CD692B6EC00000A3BBBD /* ExploreBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreBannerViewModel.swift; sourceTree = "<group>"; };
+		45F8CD6B2B6EC02A00A3BBBD /* ExplorePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePostViewModel.swift; sourceTree = "<group>"; };
+		45F8CD6D2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagViewModel.swift; sourceTree = "<group>"; };
+		45F8CD6F2B6EC06B00A3BBBD /* ExploreUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +173,10 @@
 		4512475C2B6AC94A000EE7CF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				45F8CD692B6EC00000A3BBBD /* ExploreBannerViewModel.swift */,
+				45F8CD6B2B6EC02A00A3BBBD /* ExplorePostViewModel.swift */,
+				45F8CD6D2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift */,
+				45F8CD6F2B6EC06B00A3BBBD /* ExploreUserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -223,6 +241,9 @@
 				4591652A2B6C0DBA00A43746 /* PostModel.swift */,
 				4562671E2B6D9A9A001868C1 /* PostComment.swift */,
 				456267202B6D9AC2001868C1 /* User.swift */,
+				45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */,
+				45F8CD652B6EBE7500A3BBBD /* ExploreCell.swift */,
+				45F8CD672B6EBEA800A3BBBD /* ExploreSectionType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +336,7 @@
 				4512477F2B6ACB79000EE7CF /* HapticsManager.swift in Sources */,
 				4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */,
 				4512477B2B6ACB5D000EE7CF /* DatabaseManager.swift in Sources */,
+				45F8CD662B6EBE7500A3BBBD /* ExploreCell.swift in Sources */,
 				4512475F2B6ACA2F000EE7CF /* ExploreViewController.swift in Sources */,
 				451247692B6ACAA3000EE7CF /* UserListViewController.swift in Sources */,
 				4512476F2B6ACAC0000EE7CF /* SettingsViewController.swift in Sources */,
@@ -324,15 +346,21 @@
 				451247712B6ACAD8000EE7CF /* TabBarViewController.swift in Sources */,
 				4512477D2B6ACB6E000EE7CF /* AuthManager.swift in Sources */,
 				451247772B6ACB3B000EE7CF /* APIManager.swift in Sources */,
+				45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */,
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
 				4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */,
+				45F8CD6C2B6EC02A00A3BBBD /* ExplorePostViewModel.swift in Sources */,
+				45F8CD6A2B6EC00000A3BBBD /* ExploreBannerViewModel.swift in Sources */,
 				4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */,
+				45F8CD702B6EC06B00A3BBBD /* ExploreUserViewModel.swift in Sources */,
 				451247632B6ACA46000EE7CF /* NotificationsViewController.swift in Sources */,
 				4512476B2B6ACAAE000EE7CF /* SignInViewController.swift in Sources */,
 				451247652B6ACA50000EE7CF /* ProfileViewController.swift in Sources */,
+				45F8CD682B6EBEA800A3BBBD /* ExploreSectionType.swift in Sources */,
 				45F8CD602B6E9E9F00A3BBBD /* CommentTableViewCell.swift in Sources */,
 				451247792B6ACB46000EE7CF /* StorageManager.swift in Sources */,
+				45F8CD642B6EBE5000A3BBBD /* ExploreSection.swift in Sources */,
 				451247462B6ABC3B000EE7CF /* AppDelegate.swift in Sources */,
 				451247482B6ABC3B000EE7CF /* SceneDelegate.swift in Sources */,
 				456267212B6D9AC2001868C1 /* User.swift in Sources */,
