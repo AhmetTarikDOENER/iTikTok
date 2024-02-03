@@ -43,3 +43,23 @@ extension UIView {
         }
     }
 }
+//MARK: - DateFormatter
+extension DateFormatter {
+    
+    static let defaultFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.locale = .current
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        
+        return formatter
+    }()
+}
+//MARK: - Date -> String Formatter
+extension String {
+    
+    static func date(with date: Date) -> String {
+        DateFormatter.defaultFormatter.string(from: date)
+    }
+}
