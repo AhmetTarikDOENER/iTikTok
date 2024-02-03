@@ -17,6 +17,7 @@ class PostViewController: UIViewController {
 
     var model: PostModel
     var player: AVPlayer?
+    private var playerDidFinishObserver: NSObjectProtocol?
     
     weak var delegate: PostViewControllerDelegate?
     
@@ -122,7 +123,6 @@ class PostViewController: UIViewController {
     }
     
     //MARK: - Private
-    
     private func configureVideo() {
         guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else { return }
         let url = URL(fileURLWithPath: path)
@@ -133,6 +133,16 @@ class PostViewController: UIViewController {
         view.layer.addSublayer(playerLayer)
         player?.volume = 0
         player?.play()
+        
+        guard let player else { return }
+        playerDidFinishObserver = NotificationCenter.default.addObserver(
+            forName: AVPlayerItem.didPlayToEndTimeNotification,
+            object: player.currentItem,
+            queue: .main) {
+                _ in
+                player.seek(to: .zero)
+                player.play()
+            }
     }
     
     @objc private func didTapProfileButton() {
