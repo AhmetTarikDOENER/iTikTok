@@ -40,8 +40,14 @@ class AuthField: UITextField {
     
     private func configureUI() {
         autocapitalizationType = .none
-        if type == .password { isSecureTextEntry = true }
-        else if type == .email { keyboardType = .emailAddress }
+        if type == .password {
+            textContentType = .oneTimeCode
+            isSecureTextEntry = true
+        }
+        else if type == .email {
+            textContentType = .emailAddress
+            keyboardType = .emailAddress
+        }
         
         backgroundColor = .secondarySystemBackground
         layer.cornerRadius = 8

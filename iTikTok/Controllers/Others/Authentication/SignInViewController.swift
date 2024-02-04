@@ -136,13 +136,25 @@ class SignInViewController: UIViewController {
             return
         }
         AuthManager.shared.signIn(with: email, password: password) {
-            loggedIn in
-            if loggedIn {
-                // Dismiss SignIn
-            } else {
-                // Show error
+            [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let email):
+                    self?.dismiss(animated: true)
+                case .failure(let error):
+                    print(error)
+                    let alert = UIAlertController(
+                        title: "Sign In Failed",
+                        message: "Please check your email and password to try again",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                    self?.present(alert, animated: true)
+                    self?.passwordField.text = nil
+                }
             }
         }
+        
     }
     
     @objc private func didTapSignUpButton() {

@@ -146,8 +146,20 @@ class SignUpViewController: UIViewController {
             with: username,
             emailAddress: email,
             password: password) {
-                success in
-                
+                [weak self] success in
+                DispatchQueue.main.async {
+                    if success {
+                        self?.dismiss(animated: true)
+                    } else {
+                        let alert = UIAlertController(
+                            title: "Sign Up Failed",
+                            message: "Something went wrong when trying to register. Please try again.",
+                            preferredStyle: .alert
+                        )
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                        self?.present(alert, animated: true)
+                    }
+                }
             }
     }
     

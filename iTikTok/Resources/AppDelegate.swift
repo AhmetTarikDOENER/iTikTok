@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         FirebaseApp.configure()
+        
         return true
     }
 }
