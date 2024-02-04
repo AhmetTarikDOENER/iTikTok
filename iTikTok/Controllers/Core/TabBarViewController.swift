@@ -57,8 +57,13 @@ class TabBarViewController: UITabBarController {
         
         let navVC1 = UINavigationController(rootViewController: homeVC)
         let navVC2 = UINavigationController(rootViewController: exploreVC)
+        let cameraNav = UINavigationController(rootViewController: cameraVC)
         let navVC3 = UINavigationController(rootViewController: notificationsVC)
         let navVC4 = UINavigationController(rootViewController: profileVC)
+        
+        cameraNav.navigationBar.backgroundColor = .clear
+        cameraNav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        cameraNav.navigationBar.shadowImage = UIImage()
         
         navVC1.navigationBar.backgroundColor = .clear
         navVC1.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -70,6 +75,6 @@ class TabBarViewController: UITabBarController {
         navVC3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "bell"), tag: 4)
         navVC4.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.circle"), tag: 5)
         
-        setViewControllers([navVC1, navVC2, cameraVC, navVC3, navVC4], animated: false)
+        setViewControllers([navVC1, navVC2, cameraNav, navVC3, navVC4], animated: false)
     }
 }
