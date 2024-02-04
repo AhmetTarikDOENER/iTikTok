@@ -20,12 +20,11 @@ final class AuthManager {
     }
     
     //MARK: - Public
-    public func signOut() {
-        
-    }
-    
     public func signIn(with method: SignInMethod) {
         
     }
     
+    public func signOut() {
+        
+    }
 }
