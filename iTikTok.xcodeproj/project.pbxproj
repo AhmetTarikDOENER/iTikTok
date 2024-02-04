@@ -40,6 +40,8 @@
 		456267212B6D9AC2001868C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456267202B6D9AC2001868C1 /* User.swift */; };
 		459165282B6BFC3300A43746 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459165272B6BFC3300A43746 /* Extensions.swift */; };
 		4591652B2B6C0DBA00A43746 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4591652A2B6C0DBA00A43746 /* PostModel.swift */; };
+		45F6037A2B6FBE93005DDB05 /* explore.json in Resources */ = {isa = PBXBuildFile; fileRef = 45F603792B6FBE93005DDB05 /* explore.json */; };
+		45F6037C2B6FBF95005DDB05 /* ExploreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F6037B2B6FBF95005DDB05 /* ExploreManager.swift */; };
 		45F8CD602B6E9E9F00A3BBBD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */; };
 		45F8CD622B6EAF9400A3BBBD /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 45F8CD612B6EAF9400A3BBBD /* video.mp4 */; };
 		45F8CD642B6EBE5000A3BBBD /* ExploreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */; };
@@ -84,6 +86,8 @@
 		456267202B6D9AC2001868C1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		459165272B6BFC3300A43746 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4591652A2B6C0DBA00A43746 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		45F603792B6FBE93005DDB05 /* explore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = explore.json; sourceTree = "<group>"; };
+		45F6037B2B6FBF95005DDB05 /* ExploreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreManager.swift; sourceTree = "<group>"; };
 		45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		45F8CD612B6EAF9400A3BBBD /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreSection.swift; sourceTree = "<group>"; };
@@ -152,9 +156,10 @@
 			children = (
 				451247452B6ABC3B000EE7CF /* AppDelegate.swift */,
 				451247472B6ABC3B000EE7CF /* SceneDelegate.swift */,
+				459165272B6BFC3300A43746 /* Extensions.swift */,
+				45F603792B6FBE93005DDB05 /* explore.json */,
 				4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */,
 				4512474E2B6ABC3C000EE7CF /* Assets.xcassets */,
-				459165272B6BFC3300A43746 /* Extensions.swift */,
 				45F8CD612B6EAF9400A3BBBD /* video.mp4 */,
 			);
 			path = Resources;
@@ -197,6 +202,7 @@
 				4512477A2B6ACB5D000EE7CF /* DatabaseManager.swift */,
 				4512477C2B6ACB6E000EE7CF /* AuthManager.swift */,
 				4512477E2B6ACB79000EE7CF /* HapticsManager.swift */,
+				45F6037B2B6FBF95005DDB05 /* ExploreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F6037A2B6FBE93005DDB05 /* explore.json in Resources */,
 				451247522B6ABC3C000EE7CF /* LaunchScreen.storyboard in Resources */,
 				4512474F2B6ABC3C000EE7CF /* Assets.xcassets in Resources */,
 				4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */,
@@ -366,6 +373,7 @@
 				4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */,
 				45F8CD6C2B6EC02A00A3BBBD /* ExplorePostViewModel.swift in Sources */,
 				45F8CD6A2B6EC00000A3BBBD /* ExploreBannerViewModel.swift in Sources */,
+				45F6037C2B6FBF95005DDB05 /* ExploreManager.swift in Sources */,
 				4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */,
 				45F8CD762B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift in Sources */,
 				45F8CD702B6EC06B00A3BBBD /* ExploreUserViewModel.swift in Sources */,

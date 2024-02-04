@@ -22,6 +22,7 @@ class ExploreBannerCollectionViewCell: UICollectionViewCell {
     private let label: UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 1
+        lbl.textColor = .white
         lbl.font = .systemFont(ofSize: 20, weight: .semibold)
         
         return lbl

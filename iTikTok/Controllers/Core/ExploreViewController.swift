@@ -43,158 +43,58 @@ class ExploreViewController: UIViewController {
     
     private func configureModels() {
         // Banner
-        var cells = [ExploreCell]()
-        for _ in 0...100 {
-            let cell = ExploreCell.banner(
-                viewModel: .init(
-                    image: UIImage(named: "test"),
-                    title: "Test",
-                    handler: {
-                        
-                    }
-                )
+        sections.append(
+            ExploreSection(
+                type: .banners,
+                cells: ExploreManager.shared.getExploreBanners().compactMap({
+                    return ExploreCell.banner(viewModel: $0)
+                })
             )
-            cells.append(cell)
-        }
-        
-        sections.append(ExploreSection(type: .banners, cells: cells))
+        )
         
         // TrendingPosts
-        var posts = [ExploreCell]()
-        for _ in 0...40 {
-            posts.append(
-                ExploreCell.post(
-                    viewModel: .init(
-                        thumbnailImage: UIImage(named: "test"),
-                        caption: "This was a really cool post and very very long post",
-                        handler: {
-                            
-                        }
-                    )
-                )
-            )
-        }
         sections.append(
             .init(
                 type: .trendingPosts,
-                cells: posts
+                cells: ExploreManager.shared.getExploreTrendingPosts().compactMap({
+                    .post(viewModel: $0)
+                })
             )
         )
         // Users
         sections.append(
             .init(
                 type: .users,
-                cells: [
-                    .user(
-                        viewModel: .init(
-                            profilePictureURL: nil,
-                            username: "AhmetTarik",
-                            followerCount: 0,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .user(
-                        viewModel: .init(
-                            profilePictureURL: nil,
-                            username: "Enes",
-                            followerCount: 0,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .user(
-                        viewModel: .init(
-                            profilePictureURL: nil,
-                            username: "Emilia",
-                            followerCount: 0,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .user(
-                        viewModel: .init(
-                            profilePictureURL: nil,
-                            username: "Milka",
-                            followerCount: 0,
-                            handler: {
-                                
-                            }
-                        )
-                    )
-                ]
+                cells: ExploreManager.shared.getExploreCreators().compactMap({
+                    .user(viewModel: $0)
+                })
             )
         )
         // Trending Hashtags
         sections.append(
             .init(
                 type: .trendingHashtags,
-                cells: [
-                    .hashtag(
-                        viewModel: .init(
-                            text: "#foryou",
-                            icon: UIImage(systemName: "house"),
-                            count: 1,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .hashtag(
-                        viewModel: .init(
-                            text: "#iphone12",
-                            icon: UIImage(systemName: "camera"),
-                            count: 1,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .hashtag(
-                        viewModel: .init(
-                            text: "#tiktokcourse",
-                            icon: UIImage(systemName: "airplane"),
-                            count: 1,
-                            handler: {
-                                
-                            }
-                        )
-                    ),
-                    .hashtag(
-                        viewModel: .init(
-                            text: "#m1Macbook",
-                            icon: UIImage(systemName: "bell"),
-                            count: 1,
-                            handler: {
-                                
-                            }
-                        )
-                    )
-                ]
-            )
-        )
-        // Recommendend
-        sections.append(
-            .init(
-                type: .recommended,
-                cells: posts
+                cells: ExploreManager.shared.getExploreHashtag().compactMap({
+                    .hashtag(viewModel: $0)
+                })
             )
         )
         // Popular
         sections.append(
             .init(
                 type: .popular,
-                cells: posts
+                cells: ExploreManager.shared.getExplorePopularPosts().compactMap({
+                    .post(viewModel: $0)
+                })
             )
         )
         // New&recent
         sections.append(
             .init(
                 type: .new,
-                cells: posts
+                cells: ExploreManager.shared.getExploreRecentPosts().compactMap({
+                    .post(viewModel: $0)
+                })
             )
         )
     }
