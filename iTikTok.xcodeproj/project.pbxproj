@@ -224,8 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				451247682B6ACAA3000EE7CF /* UserListViewController.swift */,
-				4512476A2B6ACAAE000EE7CF /* SignInViewController.swift */,
-				4512476C2B6ACAB6000EE7CF /* SignUpViewController.swift */,
+				45F6037D2B6FE3F5005DDB05 /* Authentication */,
 				4512476E2B6ACAC0000EE7CF /* SettingsViewController.swift */,
 				451247742B6ACB23000EE7CF /* PostViewController.swift */,
 				4562671C2B6D8D46001868C1 /* CommentsViewController.swift */,
@@ -264,6 +263,15 @@
 				45F8CD672B6EBEA800A3BBBD /* ExploreSectionType.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		45F6037D2B6FE3F5005DDB05 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4512476A2B6ACAAE000EE7CF /* SignInViewController.swift */,
+				4512476C2B6ACAB6000EE7CF /* SignUpViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

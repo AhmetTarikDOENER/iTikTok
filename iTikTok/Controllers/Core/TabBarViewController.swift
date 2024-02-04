@@ -8,6 +8,8 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    private var signInPresented = false
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -15,7 +17,28 @@ class TabBarViewController: UITabBarController {
         setupControllers()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !signInPresented {
+            presentSignInIfNeeded()
+        }
+    }
+    
     //MARK: - Private
+    private func presentSignInIfNeeded() {
+        if !AuthManager.shared.isSignedIn {
+            signInPresented = true
+            let vc = SignInViewController()
+            vc.completion = {
+                [weak self] in
+                self?.signInPresented = false
+            }
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            present(navVC, animated: false)
+        }
+    }
+    
     private func setupControllers() {
         let homeVC = HomeViewController()
         let exploreVC = ExploreViewController()

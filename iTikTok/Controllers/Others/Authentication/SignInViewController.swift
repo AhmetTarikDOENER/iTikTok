@@ -8,10 +8,12 @@
 import UIKit
 
 class SignInViewController: UIViewController {
+    
+    public var completion: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        title = "Sign In"
     }
 }
