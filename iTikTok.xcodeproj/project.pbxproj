@@ -248,12 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */,
-				45F8CD712B6EDCF100A3BBBD /* ExploreBannerCollectionViewCell.swift */,
-				45F8CD732B6EDCFD00A3BBBD /* ExplorePostCollectionViewCell.swift */,
-				45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */,
-				45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */,
-				45F6037E2B6FEF38005DDB05 /* AuthField.swift */,
-				45F603802B6FEF4A005DDB05 /* AuthButton.swift */,
+				45F603822B700160005DDB05 /* ExploreCell */,
+				45F603832B700172005DDB05 /* AuthComponents */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -278,6 +274,26 @@
 				4512476C2B6ACAB6000EE7CF /* SignUpViewController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		45F603822B700160005DDB05 /* ExploreCell */ = {
+			isa = PBXGroup;
+			children = (
+				45F8CD712B6EDCF100A3BBBD /* ExploreBannerCollectionViewCell.swift */,
+				45F8CD732B6EDCFD00A3BBBD /* ExplorePostCollectionViewCell.swift */,
+				45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */,
+				45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */,
+			);
+			path = ExploreCell;
+			sourceTree = "<group>";
+		};
+		45F603832B700172005DDB05 /* AuthComponents */ = {
+			isa = PBXGroup;
+			children = (
+				45F6037E2B6FEF38005DDB05 /* AuthField.swift */,
+				45F603802B6FEF4A005DDB05 /* AuthButton.swift */,
+			);
+			path = AuthComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

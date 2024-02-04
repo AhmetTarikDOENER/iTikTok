@@ -14,6 +14,7 @@ class AuthField: UITextField {
     enum FieldType {
         case email
         case password
+        case username
         
         var title: String {
             switch self {
@@ -21,6 +22,8 @@ class AuthField: UITextField {
                 "Email Address"
             case .password:
                 "Password"
+            case .username:
+                "Username"
             }
         }
     }
@@ -36,6 +39,7 @@ class AuthField: UITextField {
     }
     
     private func configureUI() {
+        autocapitalizationType = .none
         if type == .password { isSecureTextEntry = true }
         else if type == .email { keyboardType = .emailAddress }
         
