@@ -29,7 +29,6 @@ final class DatabaseManager {
             [weak self] snapshot in
             guard var usersDictionary = snapshot.value as? [String: Any] else {
                 // Create users root node
-                
                 self?.database.child("users").setValue(
                     [
                         username: [
@@ -77,6 +76,7 @@ final class DatabaseManager {
     
     public func insertPost(
         with fileName: String,
+        caption: String,
         completion: @escaping (Bool) -> Void
     ) {
         guard let username = UserDefaults.standard.string(forKey: "username") else {
@@ -89,8 +89,13 @@ final class DatabaseManager {
                 completion(false)
                 return
             }
-            if var posts = value["posts"] as? String {
-                posts.append(fileName)
+            
+            let newEntry = [
+                "name": fileName,
+                "caption": caption
+            ]
+            if var posts = value["posts"] as? [[String: Any]] {
+                posts.append(newEntry)
                 value["posts"] = posts
                 self?.database.child("users").child(username).setValue(value) {
                     error, _ in
@@ -101,7 +106,7 @@ final class DatabaseManager {
                     completion(true)
                 }
             } else {
-                value["posts"] = [fileName]
+                value["posts"] = [newEntry]
                 self?.database.child("users").child(username).setValue(value) {
                     error, _ in
                     guard error == nil else {

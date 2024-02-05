@@ -233,12 +233,12 @@
 		451247672B6ACA6D000EE7CF /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				451247682B6ACAA3000EE7CF /* UserListViewController.swift */,
+				45FA2B7E2B715EC800E76EB9 /* UserList */,
 				45F6037D2B6FE3F5005DDB05 /* Authentication */,
-				4512476E2B6ACAC0000EE7CF /* SettingsViewController.swift */,
-				451247742B6ACB23000EE7CF /* PostViewController.swift */,
-				4562671C2B6D8D46001868C1 /* CommentsViewController.swift */,
-				45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */,
+				45FA2B7A2B715EA000E76EB9 /* Settings */,
+				45FA2B7B2B715EA900E76EB9 /* Post */,
+				45FA2B7C2B715EB300E76EB9 /* Comment */,
+				45FA2B7D2B715EBB00E76EB9 /* Caption */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -310,6 +310,46 @@
 				45F8CD5F2B6E9E9F00A3BBBD /* CommentTableViewCell.swift */,
 			);
 			path = CommentCell;
+			sourceTree = "<group>";
+		};
+		45FA2B7A2B715EA000E76EB9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4512476E2B6ACAC0000EE7CF /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		45FA2B7B2B715EA900E76EB9 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				451247742B6ACB23000EE7CF /* PostViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		45FA2B7C2B715EB300E76EB9 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				4562671C2B6D8D46001868C1 /* CommentsViewController.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		45FA2B7D2B715EBB00E76EB9 /* Caption */ = {
+			isa = PBXGroup;
+			children = (
+				45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */,
+			);
+			path = Caption;
+			sourceTree = "<group>";
+		};
+		45FA2B7E2B715EC800E76EB9 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				451247682B6ACAA3000EE7CF /* UserListViewController.swift */,
+			);
+			path = UserList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
