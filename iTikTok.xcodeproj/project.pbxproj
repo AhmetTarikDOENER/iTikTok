@@ -58,6 +58,7 @@
 		45F8CD762B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */; };
 		45F8CD782B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */; };
 		45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B732B713FB600E76EB9 /* RecordButton.swift */; };
+		45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
 		45FA2B732B713FB600E76EB9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				4512476E2B6ACAC0000EE7CF /* SettingsViewController.swift */,
 				451247742B6ACB23000EE7CF /* PostViewController.swift */,
 				4562671C2B6D8D46001868C1 /* CommentsViewController.swift */,
+				45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				45F6037F2B6FEF38005DDB05 /* AuthField.swift in Sources */,
 				45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */,
 				45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */,
+				45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */,
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
 				4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */,
