@@ -19,6 +19,8 @@ class CameraViewController: UIViewController {
     // Capture Preview
     var capturePreviewLayer: AVCaptureVideoPreviewLayer?
     
+    private let recordButton = RecordButton()
+    
     private let cameraView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -27,24 +29,30 @@ class CameraViewController: UIViewController {
         return view
     }()
     
-    
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubview(cameraView)
+        view.addSubviews(cameraView, recordButton)
         setupCamera()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
             action: #selector(didTapCloseButton)
         )
+        recordButton.addTarget(self, action: #selector(didTapRecord), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         cameraView.frame = view.bounds
+        let size: CGFloat = 70
+        recordButton.frame = CGRect(
+            x: (view.width - size) / 2,
+            y: view.height - view.safeAreaInsets.bottom - size - 5,
+            width: size,
+            height: size
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +61,26 @@ class CameraViewController: UIViewController {
     }
     
     //MARK: - Private
+    @objc private func didTapRecord() {
+        if captureOutput.isRecording {
+            // Stop recording
+            captureOutput.stopRecording()
+        } else {
+            // Start recording
+            guard var url = FileManager.default.urls(
+                for: .documentDirectory,
+                in: .userDomainMask
+            ).first else { return }
+            url.appendingPathComponent("video.mov")
+            
+            try? FileManager.default.removeItem(at: url)
+            
+            captureOutput.startRecording(
+                to: url,
+                recordingDelegate: self
+            )
+        }
+    }
     
     @objc private func didTapCloseButton() {
         captureSession.stopRunning()
@@ -105,6 +133,13 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
         error: Error?
     ) {
         guard error == nil else {
+            let alert = UIAlertController(
+                title: "Woops",
+                message: "Something went wrong when recording your video.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+            present(alert, animated: true)
             return
         }
         print("Finished recording to url: \(outputFileURL.absoluteString)")

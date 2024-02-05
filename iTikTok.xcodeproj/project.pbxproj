@@ -57,6 +57,7 @@
 		45F8CD742B6EDCFD00A3BBBD /* ExplorePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD732B6EDCFD00A3BBBD /* ExplorePostCollectionViewCell.swift */; };
 		45F8CD762B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */; };
 		45F8CD782B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */; };
+		45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B732B713FB600E76EB9 /* RecordButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		45F8CD732B6EDCFD00A3BBBD /* ExplorePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		45F8CD752B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
+		45FA2B732B713FB600E76EB9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				45F603842B70092A005DDB05 /* CommentCell */,
 				45F603822B700160005DDB05 /* ExploreCell */,
 				45F603832B700172005DDB05 /* AuthComponents */,
+				45FA2B732B713FB600E76EB9 /* RecordButton.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				4512477D2B6ACB6E000EE7CF /* AuthManager.swift in Sources */,
 				451247772B6ACB3B000EE7CF /* APIManager.swift in Sources */,
 				45F6037F2B6FEF38005DDB05 /* AuthField.swift in Sources */,
+				45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */,
 				45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */,
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
