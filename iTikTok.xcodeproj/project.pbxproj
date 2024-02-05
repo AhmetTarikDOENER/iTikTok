@@ -61,6 +61,9 @@
 		45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */; };
 		45FA2B792B71595B00E76EB9 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 45FA2B782B71595B00E76EB9 /* JGProgressHUD */; };
 		45FA2B802B71700500E76EB9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B7F2B71700500E76EB9 /* Notifications.swift */; };
+		45FA2B822B71744500E76EB9 /* NotificationsUserFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B812B71744500E76EB9 /* NotificationsUserFollowTableViewCell.swift */; };
+		45FA2B842B7174D500E76EB9 /* NotificationsPostLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B832B7174D500E76EB9 /* NotificationsPostLikeTableViewCell.swift */; };
+		45FA2B862B7174FB00E76EB9 /* NotificationsPostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B852B7174FB00E76EB9 /* NotificationsPostCommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +115,9 @@
 		45FA2B732B713FB600E76EB9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		45FA2B7F2B71700500E76EB9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		45FA2B812B71744500E76EB9 /* NotificationsUserFollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsUserFollowTableViewCell.swift; sourceTree = "<group>"; };
+		45FA2B832B7174D500E76EB9 /* NotificationsPostLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostLikeTableViewCell.swift; sourceTree = "<group>"; };
+		45FA2B852B7174FB00E76EB9 /* NotificationsPostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPostCommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +265,8 @@
 				45F603842B70092A005DDB05 /* CommentCell */,
 				45F603822B700160005DDB05 /* ExploreCell */,
 				45F603832B700172005DDB05 /* AuthComponents */,
-				45FA2B732B713FB600E76EB9 /* RecordButton.swift */,
+				45FA2B882B71751500E76EB9 /* Camera */,
+				45FA2B872B71750200E76EB9 /* Notifications */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -353,6 +360,24 @@
 				451247682B6ACAA3000EE7CF /* UserListViewController.swift */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		45FA2B872B71750200E76EB9 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				45FA2B812B71744500E76EB9 /* NotificationsUserFollowTableViewCell.swift */,
+				45FA2B832B7174D500E76EB9 /* NotificationsPostLikeTableViewCell.swift */,
+				45FA2B852B7174FB00E76EB9 /* NotificationsPostCommentTableViewCell.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		45FA2B882B71751500E76EB9 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				45FA2B732B713FB600E76EB9 /* RecordButton.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,9 +488,11 @@
 				45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */,
 				45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */,
 				45FA2B802B71700500E76EB9 /* Notifications.swift in Sources */,
+				45FA2B862B7174FB00E76EB9 /* NotificationsPostCommentTableViewCell.swift in Sources */,
 				45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */,
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
+				45FA2B842B7174D500E76EB9 /* NotificationsPostLikeTableViewCell.swift in Sources */,
 				4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */,
 				45F8CD6C2B6EC02A00A3BBBD /* ExplorePostViewModel.swift in Sources */,
 				45F8CD6A2B6EC00000A3BBBD /* ExploreBannerViewModel.swift in Sources */,
@@ -483,6 +510,7 @@
 				45F8CD722B6EDCF100A3BBBD /* ExploreBannerCollectionViewCell.swift in Sources */,
 				451247462B6ABC3B000EE7CF /* AppDelegate.swift in Sources */,
 				451247482B6ABC3B000EE7CF /* SceneDelegate.swift in Sources */,
+				45FA2B822B71744500E76EB9 /* NotificationsUserFollowTableViewCell.swift in Sources */,
 				456267212B6D9AC2001868C1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
