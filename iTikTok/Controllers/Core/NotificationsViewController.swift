@@ -109,7 +109,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
                 withIdentifier: NotificationsPostLikeTableViewCell.identifier,
                 for: indexPath
             ) as? NotificationsPostLikeTableViewCell else { return UITableViewCell() }
-            cell.configure(with: postName)
+            cell.configure(with: postName, model: model)
             return cell
             
         case .userFollow(let username):
@@ -117,7 +117,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
                 withIdentifier: NotificationsUserFollowTableViewCell.identifier,
                 for: indexPath
             ) as? NotificationsUserFollowTableViewCell else { return UITableViewCell() }
-            cell.configure(with: username)
+            cell.configure(with: username, model: model)
             return cell
             
         case .postComment(let postName):
@@ -125,12 +125,16 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
                 withIdentifier: NotificationsPostCommentTableViewCell.identifier,
                 for: indexPath
             ) as? NotificationsPostCommentTableViewCell else { return UITableViewCell() }
-            cell.configure(with: postName)
+            cell.configure(with: postName, model: model)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
