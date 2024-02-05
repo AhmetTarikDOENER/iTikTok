@@ -60,6 +60,7 @@
 		45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B732B713FB600E76EB9 /* RecordButton.swift */; };
 		45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */; };
 		45FA2B792B71595B00E76EB9 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 45FA2B782B71595B00E76EB9 /* JGProgressHUD */; };
+		45FA2B802B71700500E76EB9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA2B7F2B71700500E76EB9 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		45F8CD772B6EDD1000A3BBBD /* ExploreHashtagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHashtagCollectionViewCell.swift; sourceTree = "<group>"; };
 		45FA2B732B713FB600E76EB9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		45FA2B752B7146C400E76EB9 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
+		45FA2B7F2B71700500E76EB9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 				45F8CD632B6EBE5000A3BBBD /* ExploreSection.swift */,
 				45F8CD652B6EBE7500A3BBBD /* ExploreCell.swift */,
 				45F8CD672B6EBEA800A3BBBD /* ExploreSectionType.swift */,
+				45FA2B7F2B71700500E76EB9 /* Notifications.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				45F6037F2B6FEF38005DDB05 /* AuthField.swift in Sources */,
 				45FA2B742B713FB600E76EB9 /* RecordButton.swift in Sources */,
 				45F8CD6E2B6EC04F00A3BBBD /* ExploreHashtagViewModel.swift in Sources */,
+				45FA2B802B71700500E76EB9 /* Notifications.swift in Sources */,
 				45FA2B762B7146C400E76EB9 /* CaptionViewController.swift in Sources */,
 				4512474A2B6ABC3B000EE7CF /* HomeViewController.swift in Sources */,
 				4512476D2B6ACAB6000EE7CF /* SignUpViewController.swift in Sources */,
