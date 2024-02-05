@@ -13,7 +13,7 @@ final class StorageManager {
     public static let shared = StorageManager()
     private init() {}
     
-    private let storage = Storage.storage().reference()
+    private let storageBucket = Storage.storage().reference()
     
     //MARK: - Public
     public func getVideoURL(
@@ -23,7 +23,27 @@ final class StorageManager {
         
     }
     
-    public func uploadVideoURL(from URL: String) {
+    public func uploadVideo(
+        from url: URL,
+        filename: String,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let username = UserDefaults.standard.string(forKey: "username") else {
+            return
+        }
+        storageBucket.child("videos/\(username)/\(filename)").putFile(
+            from: url,
+            metadata: nil) {
+                _, error in
+                completion(error == nil)
+            }
+    }
+    
+    public func generateVideoName() -> String {
+        let uuidString = UUID().uuidString
+        let number = Int.random(in: 0...1000)
+        let unixTimestamps = Date().timeIntervalSince1970
         
+        return uuidString + "_\(number)_" + "\(unixTimestamps)" + ".mov"
     }
 }
