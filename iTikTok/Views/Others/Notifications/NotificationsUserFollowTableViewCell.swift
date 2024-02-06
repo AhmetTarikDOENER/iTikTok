@@ -127,6 +127,11 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         avatarImageView.image = nil
         label.text = nil
         dateLabel.text = nil
+        followButton.setTitle("Follow", for: .normal)
+        followButton.setTitleColor(nil, for: .normal)
+        followButton.backgroundColor = .systemBlue
+        followButton.layer.borderWidth = 0
+        followButton.layer.borderColor = nil
     }
     
     //MARK: - Private
@@ -137,6 +142,11 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
     
     @objc private func didTapFollowButton(_ sender: UIButton) {
         guard let username else { return }
+        followButton.setTitle("Following", for: .normal)
+        followButton.setTitleColor(.label, for: .normal)
+        followButton.backgroundColor = .clear
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor.lightGray.cgColor
         delegate?.notificationsUserFollowTableViewCell(self, didTapFollowFor: username)
     }
     
