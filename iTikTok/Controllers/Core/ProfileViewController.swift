@@ -108,7 +108,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         1
     }
-    
+    //MARK: - HeaderView
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
@@ -122,6 +122,14 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
               ) as? ProfileHeaderCollectionReusableView else {
             return UICollectionReusableView()
         }
+        header.delegate = self
+        let viewModel = ProfileHeaderViewModel(
+            avatarImageURL: nil,
+            followerCount: 220,
+            followingCount: 200,
+            isFollowing: false
+        )
+        header.configure(with: viewModel)
         return header
     }
     
@@ -129,4 +137,34 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         CGSize(width: view.width, height: 300)
     }
     
+}
+
+extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
+
+    func profileHeaderCollectionReusableView(
+        _ header: ProfileHeaderCollectionReusableView,
+        didTapPrimaryButtonWith viewModel: ProfileHeaderViewModel
+    ) {
+        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
+        if self.user.username == currentUsername {
+            // Edit Profile
+        } else {
+            // Follow or Unfollow current users profile which viewing
+        }
+    }
+    
+    func profileHeaderCollectionReusableView(
+        _ header: ProfileHeaderCollectionReusableView,
+        didTapFollowersButtonWith viewModel: ProfileHeaderViewModel
+    ) {
+        
+    }
+    
+    func profileHeaderCollectionReusableView(
+        _ header: ProfileHeaderCollectionReusableView,
+        didTapFollowingButtonWith viewModel: ProfileHeaderViewModel
+    ) {
+        
+    }
+
 }
