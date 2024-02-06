@@ -221,7 +221,16 @@ extension NotificationsViewController: NotificationsUserFollowTableViewCellDeleg
 extension NotificationsViewController {
     func openPost(with identifier: String) {
         // Resolve the post model from database
-        let vc = PostViewController(model: PostModel(identifier: identifier))
+        let vc = PostViewController(
+            model: PostModel(
+                identifier: identifier,
+                user: User(
+                    username: "ahmez",
+                    profilePictureURL: nil,
+                    identifier: UUID().uuidString
+                )
+            )
+        )
         vc.title = "Video"
         navigationController?.pushViewController(vc, animated: true)
     }

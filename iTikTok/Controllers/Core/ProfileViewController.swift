@@ -11,6 +11,7 @@ import JGProgressHUD
 class ProfileViewController: UIViewController {
     
     var user: User
+    private var posts = [PostModel]()
     
     enum PicturePickerType {
         case camera
@@ -58,9 +59,7 @@ class ProfileViewController: UIViewController {
         view.addSubviews(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         let username = UserDefaults.standard.string(forKey: "username")?.uppercased() ?? "MyProfile"
-        
         if title == username {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "gear"),
@@ -68,9 +67,8 @@ class ProfileViewController: UIViewController {
                 target: self,
                 action: #selector(didTapSettingsButton(_:))
             )
-
         }
-            
+        fetchPosts()
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,25 +81,32 @@ class ProfileViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    private func fetchPosts() {
+        DatabaseManager.shared.getPosts(for: user) {
+            [weak self] postModels in
+            DispatchQueue.main.async {
+                self?.posts = postModels
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+    
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
-    
+
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        30
+        posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let postModel = posts[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemBrown
+        cell.backgroundColor = .systemBlue
         return cell
     }
     

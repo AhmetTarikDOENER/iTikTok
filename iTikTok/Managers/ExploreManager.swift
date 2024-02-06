@@ -106,7 +106,16 @@ final class ExploreManager {
                     [weak self] in
                     DispatchQueue.main.async {
                         // use id to fetch post from firebase
-                        let vc = PostViewController(model: PostModel(identifier: model.id))
+                        let vc = PostViewController(
+                            model: PostModel(
+                                identifier: model.id,
+                                user: User(
+                                    username: "ahmez",
+                                    profilePictureURL: nil,
+                                    identifier: UUID().uuidString
+                                )
+                            )
+                        )
                         self?.delegate?.pushViewController(vc)
                     }
                 }
@@ -123,7 +132,16 @@ final class ExploreManager {
                     [weak self] in
                     DispatchQueue.main.async {
                         // use id to fetch post from firebase
-                        let vc = PostViewController(model: PostModel(identifier: model.id))
+                        let vc = PostViewController(
+                            model: PostModel(
+                                identifier: model.id,
+                                user: User(
+                                    username: "ahmez",
+                                    profilePictureURL: nil,
+                                    identifier: UUID().uuidString
+                                )
+                            )
+                        )
                         self?.delegate?.pushViewController(vc)
                     }
                 }
@@ -140,7 +158,16 @@ final class ExploreManager {
                     [weak self] in
                     DispatchQueue.main.async {
                         // use id to fetch post from firebase
-                        let vc = PostViewController(model: PostModel(identifier: model.id))
+                        let vc = PostViewController(
+                            model: PostModel(
+                                identifier: model.id,
+                                user: User(
+                                    username: "ahmez",
+                                    profilePictureURL: nil,
+                                    identifier: UUID().uuidString
+                                )
+                            )
+                        )
                         self?.delegate?.pushViewController(vc)
                     }
                 }
