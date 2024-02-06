@@ -7,9 +7,24 @@
 
 import UIKit
 
+protocol NotificationsUserFollowTableViewCellDelegate: AnyObject {
+    func notificationsUserFollowTableViewCell(
+        _ cell: NotificationsUserFollowTableViewCell,
+        didTapFollowFor username: String
+    )
+    func notificationsUserFollowTableViewCell(
+        _ cell: NotificationsUserFollowTableViewCell,
+        didTapAvatarFor username: String
+    )
+}
+
 class NotificationsUserFollowTableViewCell: UITableViewCell {
     
     static let identifier = "NotificationsUserFollowTableViewCell"
+    
+    weak var delegate: NotificationsUserFollowTableViewCellDelegate?
+    
+    var username: String?
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -46,11 +61,17 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         return button
     }()
     
+    //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.clipsToBounds = true
         contentView.addSubviews(avatarImageView, label, dateLabel, followButton)
         selectionStyle = .none
+        followButton.addTarget(self, action: #selector(didTapFollowButton(_:)), for: .touchUpInside)
+        
+        avatarImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapAvatarImageView))
+        avatarImageView.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -108,10 +129,22 @@ class NotificationsUserFollowTableViewCell: UITableViewCell {
         dateLabel.text = nil
     }
     
+    //MARK: - Private
+    @objc private func didTapAvatarImageView() {
+        guard let username else { return }
+        delegate?.notificationsUserFollowTableViewCell(self, didTapAvatarFor: username)
+    }
+    
+    @objc private func didTapFollowButton(_ sender: UIButton) {
+        guard let username else { return }
+        delegate?.notificationsUserFollowTableViewCell(self, didTapFollowFor: username)
+    }
+    
     func configure(with username: String, model: Notification) {
         avatarImageView.image = UIImage(named: "test")
         label.text = model.text
         dateLabel.text = .date(with: model.date)
+        self.username = username
     }
     
 }
