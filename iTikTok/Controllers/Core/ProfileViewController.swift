@@ -6,10 +6,24 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class ProfileViewController: UIViewController {
     
-    let user: User
+    var user: User
+    
+    enum PicturePickerType {
+        case camera
+        case photoLibrary
+    }
+    
+    var isCurrentUserProfile: Bool {
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            print(user.username)
+            return user.username.lowercased() == username.lowercased()
+        }
+        return false
+    }
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -124,10 +138,10 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         header.delegate = self
         let viewModel = ProfileHeaderViewModel(
-            avatarImageURL: nil,
+            avatarImageURL: user.profilePictureURL,
             followerCount: 220,
             followingCount: 200,
-            isFollowing: false
+            isFollowing: isCurrentUserProfile ? nil : false
         )
         header.configure(with: viewModel)
         return header
@@ -139,6 +153,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
+//MARK: - ProfileHeaderCollectionReusableViewDelegate
 extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
 
     func profileHeaderCollectionReusableView(
@@ -166,5 +181,74 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
     ) {
         
     }
+    
+    func profileHeaderCollectionReusableView(
+        _ header: ProfileHeaderCollectionReusableView,
+        didTapAvatarFor viewModel: ProfileHeaderViewModel
+    ) {
+        guard isCurrentUserProfile else { return }
+        let actionSheet = UIAlertController(
+            title: "Profile Picture",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default) {
+            _ in
+            DispatchQueue.main.async {
+                self.presentProfilePicturePicker(type: .camera)
+            }
+        })
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default) {
+            _ in
+            DispatchQueue.main.async {
+                self.presentProfilePicturePicker(type: .photoLibrary)
+            }
+        })
+        present(actionSheet, animated: true)
+    }
+    
+    func presentProfilePicturePicker(type: PicturePickerType) {
+        let picker = UIImagePickerController()
+        picker.sourceType = type == .camera ? .camera : .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
 
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        picker.dismiss(animated: true)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        // Upload & Update UI
+        StorageManager.shared.uploadProfilePicture(with: image) {
+            [weak self] result in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let downloadURL):
+                    UserDefaults.standard.setValue(downloadURL.absoluteString, forKey: "profile_pictures")
+                    strongSelf.user = User(
+                        username: strongSelf.user.username,
+                        profilePictureURL: downloadURL,
+                        identifier: strongSelf.user.username
+                    )
+                    strongSelf.collectionView.reloadData()
+                case .failure:
+                    break
+                }
+
+            }
+        }
+    }
 }

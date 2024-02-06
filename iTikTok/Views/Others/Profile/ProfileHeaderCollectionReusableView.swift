@@ -21,6 +21,10 @@ protocol ProfileHeaderCollectionReusableViewDelegate: AnyObject {
         _ header: ProfileHeaderCollectionReusableView,
         didTapFollowingButtonWith viewModel: ProfileHeaderViewModel
     )
+    func profileHeaderCollectionReusableView(
+        _ header: ProfileHeaderCollectionReusableView,
+        didTapAvatarFor viewModel: ProfileHeaderViewModel
+    )
 }
 
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
@@ -84,6 +88,9 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         backgroundColor = .systemBackground
         addSubviews(avatarImageView, primaryButton, followersButton, followingButton)
         configureButtons()
+        avatarImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapAvatar))
+        avatarImageView.addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
@@ -123,6 +130,10 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     //MARK: - Private
+    @objc private func didTapAvatar() {
+        guard let viewModel else { return }
+        delegate?.profileHeaderCollectionReusableView(self, didTapAvatarFor: viewModel)
+    }
     
     private func configureButtons() {
         primaryButton.addTarget(self, action: #selector(didTapPrimaryButton), for: .touchUpInside)
