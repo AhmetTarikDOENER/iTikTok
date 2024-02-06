@@ -46,9 +46,9 @@ class TabBarViewController: UITabBarController {
         let notificationsVC = NotificationsViewController()
         let profileVC = ProfileViewController(
             user: User(
-                username: "self",
+                username: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? "MyProfile",
                 profilePictureURL: nil,
-                identifier: "abc123"
+                identifier: UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
             )
         )
         
