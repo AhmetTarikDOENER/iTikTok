@@ -36,6 +36,7 @@
 		4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */; };
 		451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 451247902B6AE16E000EE7CF /* SDWebImage */; };
 		4544158E2B73D5DB00BB1E69 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */; };
+		454415912B73FFBB00BB1E69 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454415902B73FFBB00BB1E69 /* EditProfileViewController.swift */; };
 		4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671C2B6D8D46001868C1 /* CommentsViewController.swift */; };
 		4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671E2B6D9A9A001868C1 /* PostComment.swift */; };
 		456267212B6D9AC2001868C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456267202B6D9AC2001868C1 /* User.swift */; };
@@ -94,6 +95,7 @@
 		4512477E2B6ACB79000EE7CF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		454415902B73FFBB00BB1E69 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4562671C2B6D8D46001868C1 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		4562671E2B6D9A9A001868C1 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		456267202B6D9AC2001868C1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				45FA2B7B2B715EA900E76EB9 /* Post */,
 				45FA2B7C2B715EB300E76EB9 /* Comment */,
 				45FA2B7D2B715EBB00E76EB9 /* Caption */,
+				454415922B73FFC100BB1E69 /* EditProfile */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -283,6 +286,14 @@
 				4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		454415922B73FFC100BB1E69 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				454415902B73FFBB00BB1E69 /* EditProfileViewController.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		459165292B6C0DA200A43746 /* Models */ = {
@@ -573,6 +584,7 @@
 				45F8CD6A2B6EC00000A3BBBD /* ExploreBannerViewModel.swift in Sources */,
 				45F6037C2B6FBF95005DDB05 /* ExploreManager.swift in Sources */,
 				4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */,
+				454415912B73FFBB00BB1E69 /* EditProfileViewController.swift in Sources */,
 				45F8CD762B6EDD0500A3BBBD /* ExploreUserCollectionViewCell.swift in Sources */,
 				45F8CD702B6EC06B00A3BBBD /* ExploreUserViewModel.swift in Sources */,
 				45BF9BA82B729E440079B46F /* ProfileHeaderCollectionReusableView.swift in Sources */,

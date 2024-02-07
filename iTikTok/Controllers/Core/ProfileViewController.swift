@@ -213,6 +213,33 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
             // Edit Profile
         } else {
             // Follow or Unfollow current users profile which viewing
+            if self.isFollower {
+                // Unfollow
+                DatabaseManager.shared.udpateRelationship(for: user, follow: false) {
+                    [weak self] success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self?.isFollower = false
+                            self?.collectionView.reloadData()
+                        }
+                    } else {
+                        // Show alert
+                    }
+                }
+            } else {
+                // Follow
+                DatabaseManager.shared.udpateRelationship(for: user, follow: true) {
+                    [weak self] success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self?.isFollower = true
+                            self?.collectionView.reloadData()
+                        }
+                    } else {
+                        // Show alert
+                    }
+                }
+            }
         }
     }
     //MARK: - Followers&Following Buttons
