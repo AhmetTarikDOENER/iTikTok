@@ -56,7 +56,7 @@ class PostCollectionViewCell: UICollectionViewCell {
                         let cgImage = try generator.copyCGImage(at: .zero, actualTime: nil)
                         self.imageView.image = UIImage(cgImage: cgImage)
                     } catch {
-                        
+                        print(error)
                     }
                 case .failure(let error):
                     print("Failed to get download url: \(error)")

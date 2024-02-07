@@ -13,6 +13,9 @@ class ProfileViewController: UIViewController {
     var user: User
     private var posts = [PostModel]()
     
+    private var followers = [String]()
+    private var followings = [String]()
+    
     enum PicturePickerType {
         case camera
         case photoLibrary
@@ -116,6 +119,11 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         // Open post
+        let post = posts[indexPath.row]
+        let vc = PostViewController(model: post)
+        vc.delegate = self
+        vc.title = "Video"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -145,13 +153,35 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionReusableView()
         }
         header.delegate = self
-        let viewModel = ProfileHeaderViewModel(
-            avatarImageURL: user.profilePictureURL,
-            followerCount: 220,
-            followingCount: 200,
-            isFollowing: isCurrentUserProfile ? nil : false
-        )
-        header.configure(with: viewModel)
+        
+        let group = DispatchGroup()
+        group.enter()
+        group.enter()
+        
+        DatabaseManager.shared.getRelationships(for: user, type: .followers) {
+            [weak self] followers in
+            defer {
+                group.leave()
+            }
+            self?.followers = followers
+        }
+        DatabaseManager.shared.getRelationships(for: user, type: .following) {
+            [weak self] followings in
+            defer {
+                group.leave()
+            }
+            self?.followings = followings
+        }
+        
+        group.notify(queue: .main) {
+            let viewModel = ProfileHeaderViewModel(
+                avatarImageURL: self.user.profilePictureURL,
+                followerCount: self.followers.count,
+                followingCount: self.followings.count,
+                isFollowing: self.isCurrentUserProfile ? nil : false
+            )
+            header.configure(with: viewModel)
+        }
         return header
     }
     
@@ -175,19 +205,23 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
             // Follow or Unfollow current users profile which viewing
         }
     }
-    
+    //MARK: - Followers&Following Buttons
     func profileHeaderCollectionReusableView(
         _ header: ProfileHeaderCollectionReusableView,
         didTapFollowersButtonWith viewModel: ProfileHeaderViewModel
     ) {
-        
+        let vc = UserListViewController(type: .followers, user: user)
+        vc.users = followers
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func profileHeaderCollectionReusableView(
         _ header: ProfileHeaderCollectionReusableView,
         didTapFollowingButtonWith viewModel: ProfileHeaderViewModel
     ) {
-        
+        let vc = UserListViewController(type: .following, user: user)
+        vc.users = followings
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func profileHeaderCollectionReusableView(
@@ -259,5 +293,16 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
             }
         }
+    }
+}
+
+extension ProfileViewController: PostViewControllerDelegate {
+    
+    func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel) {
+        // Present comments
+    }
+    
+    func postViewController(_ vc: PostViewController, didTapProfileButtonFor post: PostModel) {
+        // Push another profile
     }
 }

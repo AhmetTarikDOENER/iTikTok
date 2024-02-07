@@ -83,6 +83,8 @@ class TabBarViewController: UITabBarController {
         navVC3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "bell"), tag: 4)
         navVC4.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.circle"), tag: 5)
         
+        navVC4.navigationBar.tintColor = .label
+        
         if #available(iOS 14.0, *) {
             navVC1.navigationItem.backButtonDisplayMode = .minimal
             navVC2.navigationItem.backButtonDisplayMode = .minimal

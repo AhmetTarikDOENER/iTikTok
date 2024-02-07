@@ -12,7 +12,7 @@ class UserListViewController: UIViewController {
     private let user: User
     private let type: ListType
     
-    enum ListType {
+    enum ListType: String {
         case followers
         case following
     }
@@ -23,6 +23,18 @@ class UserListViewController: UIViewController {
         
         return table
     }()
+    
+    private let noUsersLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Users"
+        label.textAlignment = .center
+        label.textColor = .secondaryLabel
+        
+        return label
+    }()
+    
+    public var users  = [String]()
+    
     
     //MARK: - Init
     init(type: ListType, user: User) {
@@ -38,32 +50,41 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubviews(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
         switch type {
         case .followers:
             title = "Followers"
         case .following:
             title = "Following"
         }
+        if users.isEmpty {
+            view.addSubview(noUsersLabel)
+            noUsersLabel.sizeToFit()
+        } else {
+            view.addSubviews(tableView)
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+        if tableView.superview == view {
+            tableView.frame = view.bounds
+        } else {
+            noUsersLabel.center = view.center
+        }
     }
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = users[indexPath.row].lowercased()
         return cell
     }
 }
