@@ -168,6 +168,25 @@ final class DatabaseManager {
             completion(usernameCollection)
         }
     }
+    
+    public func isValidRelationship(
+        for user: User,
+        type: UserListViewController.ListType,
+        completion: @escaping (Bool) -> Void
+    ) {
+        guard let currentUserUsername = UserDefaults.standard.string(forKey: "username")?.lowercased() else {
+            return
+        }
+        let path = "users/\(user.username.lowercased())/\(type.rawValue)"
+        database.child(path).observeSingleEvent(of: .value) {
+            snapshot in
+            guard let usernameCollection = snapshot.value as? [String] else {
+                completion(false)
+                return
+            }
+            completion(usernameCollection.contains(currentUserUsername))
+        }
+    }
 }
 
 /*

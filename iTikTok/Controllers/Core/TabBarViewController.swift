@@ -51,9 +51,9 @@ class TabBarViewController: UITabBarController {
         }
         let profileVC = ProfileViewController(
             user: User(
-                username: UserDefaults.standard.string(forKey: "username")?.uppercased() ?? "MyProfile",
-                profilePictureURL: URL(string: urlString ?? ""),
-                identifier: UserDefaults.standard.string(forKey: "username")?.lowercased() ?? ""
+                username: "tarik".uppercased(),
+                profilePictureURL: nil,
+                identifier: "tarik".lowercased()
             )
         )
         

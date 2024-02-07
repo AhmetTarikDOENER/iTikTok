@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     
     private var followers = [String]()
     private var followings = [String]()
+    private var isFollower: Bool = false
     
     enum PicturePickerType {
         case camera
@@ -157,6 +158,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         let group = DispatchGroup()
         group.enter()
         group.enter()
+        group.enter()
         
         DatabaseManager.shared.getRelationships(for: user, type: .followers) {
             [weak self] followers in
@@ -173,12 +175,20 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             self?.followings = followings
         }
         
+        DatabaseManager.shared.isValidRelationship(for: user, type: .followers) {
+            [weak self] isFollower in
+            defer {
+                group.leave()
+            }
+            self?.isFollower = isFollower
+        }
+        
         group.notify(queue: .main) {
             let viewModel = ProfileHeaderViewModel(
                 avatarImageURL: self.user.profilePictureURL,
                 followerCount: self.followers.count,
                 followingCount: self.followings.count,
-                isFollowing: self.isCurrentUserProfile ? nil : false
+                isFollowing: self.isCurrentUserProfile ? nil : self.isFollower
             )
             header.configure(with: viewModel)
         }
