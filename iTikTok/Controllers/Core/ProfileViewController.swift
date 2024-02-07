@@ -209,8 +209,11 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         didTapPrimaryButtonWith viewModel: ProfileHeaderViewModel
     ) {
         guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
-        if self.user.username == currentUsername {
+        if isCurrentUserProfile {
             // Edit Profile
+            let vc = EditProfileViewController()
+            let navVC = UINavigationController(rootViewController: vc)
+            present(navVC, animated: true)
         } else {
             // Follow or Unfollow current users profile which viewing
             if self.isFollower {
