@@ -15,6 +15,10 @@ struct PostModel {
     var caption: String = ""
     var isLikedByCurrentUser = false
     
+    var videoChildPath: String {
+        "videos/\(user.username.lowercased())/\(fileName)"
+    }
+    
     static func mockModels() -> [PostModel] {
         let posts = Array(0...100).compactMap {
             _ in

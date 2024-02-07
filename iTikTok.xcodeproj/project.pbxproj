@@ -35,6 +35,7 @@
 		4512478C2B6AD288000EE7CF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4512478B2B6AD288000EE7CF /* FirebaseStorage */; };
 		4512478E2B6AD3BD000EE7CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */; };
 		451247912B6AE16E000EE7CF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 451247902B6AE16E000EE7CF /* SDWebImage */; };
+		4544158E2B73D5DB00BB1E69 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */; };
 		4562671D2B6D8D46001868C1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671C2B6D8D46001868C1 /* CommentsViewController.swift */; };
 		4562671F2B6D9A9A001868C1 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4562671E2B6D9A9A001868C1 /* PostComment.swift */; };
 		456267212B6D9AC2001868C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456267202B6D9AC2001868C1 /* User.swift */; };
@@ -92,6 +93,7 @@
 		4512477C2B6ACB6E000EE7CF /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		4512477E2B6ACB79000EE7CF /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		4512478D2B6AD3BD000EE7CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		4562671C2B6D8D46001868C1 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		4562671E2B6D9A9A001868C1 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		456267202B6D9AC2001868C1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -270,8 +272,17 @@
 				45F603832B700172005DDB05 /* AuthComponents */,
 				45FA2B882B71751500E76EB9 /* Camera */,
 				45FA2B872B71750200E76EB9 /* Notifications */,
+				4544158F2B73D5E200BB1E69 /* Post */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		4544158F2B73D5E200BB1E69 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				4544158D2B73D5DB00BB1E69 /* PostCollectionViewCell.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		459165292B6C0DA200A43746 /* Models */ = {
@@ -540,6 +551,7 @@
 				45F603812B6FEF4A005DDB05 /* AuthButton.swift in Sources */,
 				4512476F2B6ACAC0000EE7CF /* SettingsViewController.swift in Sources */,
 				451247752B6ACB23000EE7CF /* PostViewController.swift in Sources */,
+				4544158E2B73D5DB00BB1E69 /* PostCollectionViewCell.swift in Sources */,
 				451247612B6ACA3B000EE7CF /* CameraViewController.swift in Sources */,
 				45BF9BB02B72A8F50079B46F /* ProfileHeaderView.swift in Sources */,
 				459165282B6BFC3300A43746 /* Extensions.swift in Sources */,
