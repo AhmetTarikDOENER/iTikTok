@@ -119,6 +119,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
         // Open post
         let post = posts[indexPath.row]
         let vc = PostViewController(model: post)
@@ -208,7 +209,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         _ header: ProfileHeaderCollectionReusableView,
         didTapPrimaryButtonWith viewModel: ProfileHeaderViewModel
     ) {
-        guard let currentUsername = UserDefaults.standard.string(forKey: "username") else { return }
+        HapticsManager.shared.vibrateForSelection()
         if isCurrentUserProfile {
             // Edit Profile
             let vc = EditProfileViewController()
@@ -250,6 +251,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         _ header: ProfileHeaderCollectionReusableView,
         didTapFollowersButtonWith viewModel: ProfileHeaderViewModel
     ) {
+        HapticsManager.shared.vibrateForSelection()
         let vc = UserListViewController(type: .followers, user: user)
         vc.users = followers
         navigationController?.pushViewController(vc, animated: true)
@@ -259,6 +261,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         _ header: ProfileHeaderCollectionReusableView,
         didTapFollowingButtonWith viewModel: ProfileHeaderViewModel
     ) {
+        HapticsManager.shared.vibrateForSelection()
         let vc = UserListViewController(type: .following, user: user)
         vc.users = followings
         navigationController?.pushViewController(vc, animated: true)
@@ -269,6 +272,7 @@ extension ProfileViewController: ProfileHeaderCollectionReusableViewDelegate {
         didTapAvatarFor viewModel: ProfileHeaderViewModel
     ) {
         guard isCurrentUserProfile else { return }
+        HapticsManager.shared.vibrateForSelection()
         let actionSheet = UIAlertController(
             title: "Profile Picture",
             message: nil,
@@ -321,6 +325,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                 switch result {
                 case .success(let downloadURL):
                     UserDefaults.standard.setValue(downloadURL.absoluteString, forKey: "profile_pictures")
+                    HapticsManager.shared.vibrate(for: .success)
                     strongSelf.user = User(
                         username: strongSelf.user.username,
                         profilePictureURL: downloadURL,
@@ -328,7 +333,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                     )
                     strongSelf.collectionView.reloadData()
                 case .failure:
-                    break
+                    HapticsManager.shared.vibrate(for: .error)
                 }
 
             }

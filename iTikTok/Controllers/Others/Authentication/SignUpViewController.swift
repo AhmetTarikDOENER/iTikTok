@@ -149,8 +149,10 @@ class SignUpViewController: UIViewController {
                 [weak self] success in
                 DispatchQueue.main.async {
                     if success {
+                        HapticsManager.shared.vibrate(for: .success)
                         self?.dismiss(animated: true)
                     } else {
+                        HapticsManager.shared.vibrate(for: .error)
                         let alert = UIAlertController(
                             title: "Sign Up Failed",
                             message: "Something went wrong when trying to register. Please try again.",
