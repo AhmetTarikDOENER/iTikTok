@@ -50,7 +50,7 @@ class CommentsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
         fetchPostComments()
     }
     
