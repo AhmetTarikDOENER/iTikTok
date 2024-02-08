@@ -8,15 +8,24 @@
 import UIKit
 import FirebaseStorage
 
+/// Manager object that deals with firebase storage
 final class StorageManager {
     
+    /// Shared singleton instance
     public static let shared = StorageManager()
+    /// Privatized initializer
     private init() {}
     
+    /// Storage bucket reference
     private let storageBucket = Storage.storage().reference()
     
     //MARK: - Public
     
+    /// Upload a new user video to firebase
+    /// - Parameters:
+    ///   - url: Local file URL to the video
+    ///   - filename: Desired video file upload name
+    ///   - completion: Async callback result closure
     public func uploadVideo(
         from url: URL,
         filename: String,
@@ -33,6 +42,10 @@ final class StorageManager {
             }
     }
     
+    /// Upload new profile picture
+    /// - Parameters:
+    ///   - image: New image to upload
+    ///   - completion: Async callback to result
     public func uploadProfilePicture(
         with image: UIImage,
         completion: @escaping (Result<URL, Error>) -> Void
@@ -61,7 +74,8 @@ final class StorageManager {
             }
         }
     }
-    
+    /// Generates a new file name
+    /// - Returns: Unique generated file name
     public func generateVideoName() -> String {
         let uuidString = UUID().uuidString
         let number = Int.random(in: 0...1000)
@@ -69,7 +83,10 @@ final class StorageManager {
         
         return uuidString + "_\(number)_" + "\(unixTimestamps)" + ".mov"
     }
-    
+    /// Get downloaded URL of video post
+    /// - Parameters:
+    ///   - post: Post model to get URL for
+    ///   - completion: Async callback
     func getDownloadURL(
         for post: PostModel,
         completion: @escaping (Result<URL, Error>) -> Void
@@ -83,6 +100,4 @@ final class StorageManager {
             }
         }
     }
-    
-    
 }

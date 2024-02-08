@@ -210,12 +210,18 @@ extension NotificationsViewController: NotificationsUserFollowTableViewCellDeleg
         _ cell: NotificationsUserFollowTableViewCell,
         didTapFollowFor username: String
     ) {
-        DatabaseManager.shared.follow(username: username) {
-            success in
-            if !success {
-                print("Something failed")
+        DatabaseManager.shared.udpateRelationship(
+            for: User(
+                username: username,
+                profilePictureURL: nil,
+                identifier: UUID().uuidString
+            ),
+            follow: true) {
+                success in
+                if !success {
+                    // Something went wrong
+                }
             }
-        }
     }
 }
 
