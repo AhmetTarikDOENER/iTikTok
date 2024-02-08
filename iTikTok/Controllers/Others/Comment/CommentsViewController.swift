@@ -20,7 +20,10 @@ class CommentsViewController: UIViewController {
     
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
+        table.register(
+            CommentTableViewCell.self,
+            forCellReuseIdentifier: CommentTableViewCell.identifier
+        )
         
         return table
     }()
@@ -28,7 +31,7 @@ class CommentsViewController: UIViewController {
     private let closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .label
         
         return button
     }()

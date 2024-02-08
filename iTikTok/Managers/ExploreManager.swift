@@ -207,39 +207,3 @@ final class ExploreManager {
     }
     
 }
-//MARK: - RESPONSE
-struct ExploreResponse: Codable {
-    let banners: [Banner]
-    let trendingPosts: [Post]
-    let creators: [Creator]
-    let recentPosts: [Post]
-    let hashtags: [Hashtag]
-    let popular: [Post]
-    let recommended: [Post]
-}
-//MARK: - JSON MODELS
-struct Banner: Codable {
-    let id: String
-    let image: String
-    let title: String
-    let action: String
-}
-
-struct Post: Codable {
-    let id: String
-    let image: String
-    let caption: String
-}
-
-struct Hashtag: Codable {
-    let image: String
-    let tag: String
-    let count: Int
-}
-
-struct Creator: Codable {
-    let id: String
-    let image: String
-    let username: String
-    let followers_count: Int
-}

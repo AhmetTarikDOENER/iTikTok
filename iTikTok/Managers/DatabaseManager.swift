@@ -297,8 +297,10 @@ final class DatabaseManager {
  
     users: {
         "username": {
-            email:
-            posts: []
+            email: ,
+            posts: [] ,
+            following: ,
+            followers:
         }
     }
  

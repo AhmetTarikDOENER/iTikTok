@@ -50,6 +50,19 @@ class SettingsViewController: UIViewController {
                             let vc = SFSafariViewController(url: url)
                             self?.present(vc, animated: true)
                         }
+                    }),
+                    SettingsOption(title: "Share App", handler: {
+                        [weak self] in
+                        DispatchQueue.main.async {
+                            guard let url = URL(string: "https://tiktok.com") else {
+                                return
+                            }
+                            let vc = UIActivityViewController(
+                                activityItems: [url],
+                                applicationActivities: []
+                            )
+                            self?.present(vc, animated: true)
+                        }
                     })
                 ]
             )
